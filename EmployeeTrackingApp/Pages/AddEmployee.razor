@@ -1,0 +1,23 @@
+﻿@page "/employee"
+@using Syncfusion.Blazor.Inputs;
+@using Syncfusion.Blazor.Buttons;
+<h3>Add Employee Details</h3>
+<hr />
+<div class="row">
+    <div class="col-md-3">
+        <SfTextBox @bind-Value="employeeModel.Name" class="form-control" Placeholder="Enter Name"></SfTextBox>
+    </div>
+    <div class="col-md-3">
+        <SfTextBox @bind-Value="employeeModel.Status" class="form-control" Placeholder="Enter Status"></SfTextBox>
+    </div>  <div class="col-md-3">
+        <SfTextBox @bind-Value="employeeModel.Skills" class="form-control" Placeholder="Enter Skills"></SfTextBox>
+    </div>  <div class="col-md-3">
+        <SfTextBox @bind-Value="employeeModel.InProject" class="form-control" Placeholder="InProject?"></SfTextBox>
+    </div>
+</div>
+<div class="row" style="margin-top:10px">
+    <div class="col-md-3">
+        <SfButton OnClick="SaveEmployeeDetails" style="color:red;background-color:midnightblue;border-radius:8px;padding-top:5px;padding-bottom:5px" Content="Add"></SfButton>
+    </div>
+    <div class="col-md-3"></div>
+</div>
