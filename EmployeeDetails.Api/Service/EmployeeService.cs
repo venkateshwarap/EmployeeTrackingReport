@@ -25,10 +25,9 @@ namespace EmployeeDetails.Api.Service
             };
         }
 
-        public async Task<IEnumerable> GetEmployee()
+        public List<EmployeeModel> GetAll()
         {
-            var data = _dataTestContext.EmployeeModels.ToList();
-            return data;
+            return _dataTestContext.EmployeeModels.ToList();
         }
     }
 }

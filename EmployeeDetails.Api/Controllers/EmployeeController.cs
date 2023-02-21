@@ -26,7 +26,7 @@ namespace EmployeeDetails.Api.Controllers
         [Route("GetAllEmployee")]
         public IActionResult GetAllEmployee()
         {
-            var data=_employeeService.GetEmployee();
+            var data = _employeeService.GetAll();
             return Ok(data);
         }
     }

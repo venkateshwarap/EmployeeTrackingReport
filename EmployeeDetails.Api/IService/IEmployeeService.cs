@@ -7,6 +7,6 @@ namespace EmployeeDetails.Api.IService
     public interface IEmployeeService
     {
         public ResponseModel AddEmployee(EmployeeModel employeeModel);
-        public Task<IEnumerable> GetEmployee();
+        List<EmployeeModel> GetAll();
     }
 }

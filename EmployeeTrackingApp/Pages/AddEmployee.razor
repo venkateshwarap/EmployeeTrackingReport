@@ -1,23 +1,51 @@
 ﻿@page "/employee"
+@using Employee.DataModel.Models
 @using Syncfusion.Blazor.Inputs;
 @using Syncfusion.Blazor.Buttons;
-<h3>Add Employee Details</h3>
+<h3 style="color:darkgray;">
+    <span style="font-family: Georgia, serif">Add Employee Details</span>
+</h3>
 <hr />
-<div class="row">
-    <div class="col-md-3">
-        <SfTextBox @bind-Value="employeeModel.Name" class="form-control" Placeholder="Enter Name"></SfTextBox>
+<div class="form-control">
+    <div class="row">
+        <div class="col-md-6">
+            <SfTextBox @bind-Value="employeeModel.Name" class="form-control" Placeholder="Enter Name"></SfTextBox>
+        </div>
+        <div class="col-md-6">
+            <SfTextBox @bind-Value="employeeModel.Status" class="form-control" Placeholder="Enter Status"></SfTextBox>
+        </div>
     </div>
-    <div class="col-md-3">
-        <SfTextBox @bind-Value="employeeModel.Status" class="form-control" Placeholder="Enter Status"></SfTextBox>
-    </div>  <div class="col-md-3">
-        <SfTextBox @bind-Value="employeeModel.Skills" class="form-control" Placeholder="Enter Skills"></SfTextBox>
-    </div>  <div class="col-md-3">
-        <SfTextBox @bind-Value="employeeModel.InProject" class="form-control" Placeholder="InProject?"></SfTextBox>
+    <div class="row">
+        <div class="col-md-6 mt-2">
+            <SfTextBox @bind-Value="employeeModel.Skills" class="form-control" Placeholder="Enter Skills"></SfTextBox>
+        </div>
+        <div class="col-md-6 mt-2">
+            <SfTextBox @bind-Value="employeeModel.InProject" class="form-control" Placeholder="InProject?"></SfTextBox>
+        </div>
+    </div>
+    <div style="margin-top:10px;margin-left:39%;">
+        <div class="col-md-3">
+            <SfButton OnClick="SaveEmployeeDetails" style="color:red;font-weight:900;background-color:midnightblue;border-radius:8px;padding-top:5px;padding-bottom:5px;padding-left:100px;padding-right:100px;" Content="Add"></SfButton>
+        </div>
+        <div class="col-md-3"></div>
     </div>
 </div>
-<div class="row" style="margin-top:10px">
-    <div class="col-md-3">
-        <SfButton OnClick="SaveEmployeeDetails" style="color:red;background-color:midnightblue;border-radius:8px;padding-top:5px;padding-bottom:5px" Content="Add"></SfButton>
-    </div>
-    <div class="col-md-3"></div>
+<br />
+<div class="form-control">
+    @if (getEmployeeModel == null)
+    {
+        <p><em>Loading...</em></p>
+    }
+    else
+    {
+        <SfGrid TItem="EmployeeModel" DataSource="@getEmployeeModel">
+            <GridColumns>
+                <GridColumn Field="@nameof(EmployeeModel.Id)" HeaderText="EmpId" TextAlign="TextAlign.Left" Width="100"></GridColumn>
+                <GridColumn Field="@nameof(EmployeeModel.Name)" HeaderText="EmpName" TextAlign="TextAlign.Left" Width="100"></GridColumn>
+                <GridColumn Field="@nameof(EmployeeModel.Status)" HeaderText="Stauts" TextAlign="TextAlign.Left" Width="100"></GridColumn>
+                <GridColumn Field="@nameof(EmployeeModel.Skills)" HeaderText="Skilss" TextAlign="TextAlign.Left" Width="100"></GridColumn>
+                <GridColumn Field="@nameof(EmployeeModel.InProject)" HeaderText="InProject" TextAlign="TextAlign.Left" Width="100"></GridColumn>
+            </GridColumns>
+        </SfGrid>
+    }
 </div>
