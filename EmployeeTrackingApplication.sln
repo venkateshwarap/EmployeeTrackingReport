@@ -7,7 +7,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EmployeeTrackingApp", "Empl
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Employee.DataModel", "Employee.DataModel\Employee.DataModel.csproj", "{872FA414-4DE8-445A-B1B3-43B34A5ACEBA}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EmployeeDetails.Api", "EmployeeDetails.Api\EmployeeDetails.Api.csproj", "{9E52EE25-AB94-4339-9295-E7A3078FA478}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EmployeeDetails.Api", "EmployeeDetails.Api\EmployeeDetails.Api.csproj", "{9E52EE25-AB94-4339-9295-E7A3078FA478}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

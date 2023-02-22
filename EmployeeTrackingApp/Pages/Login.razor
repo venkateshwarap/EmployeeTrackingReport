@@ -1,0 +1,58 @@
+﻿@page "/login"
+
+@using EmployeeTrackingApp.Data;
+@using EmployeeTrackingApp.Service;
+@using Syncfusion.Blazor.Inputs;
+@inject NavigationManager navManager
+@inject IJSRuntime js
+@inject AuthenticationStateProvider authStateProvider
+
+<h3>Login</h3>
+
+<div class="row">
+    <div class="col-lg-4 offset-lg-4 pt-4 pb-4 border">
+        <div class="mb-3 text-ceneter">
+        <h3 style="margin-left: 100px">Login</h3>
+        </div>
+        <div class="mb-3">
+            <label>UserName</label>
+            <SfTextBox class="form-control" @bind-Value="model.UserName" placeholder="User Name"></SfTextBox>
+        </div>
+        <div class="mb-3">
+            <label>Password</label>
+            <SfTextBox Type="InputType.Password" class="form-control" @bind-Value="model.security" placeholder="Password"></SfTextBox>
+        </div>
+        <div class="mb-3 d-grid gap-2">
+            <SfButton @onclick="Authenticate" class="btn btn-primary">Login</SfButton>
+        </div>
+    </div>
+</div>
+
+@code {
+    public class LoginModel
+    {
+        public string UserName { get; set; }
+        public string security { get; set; }
+    }
+    public LoginModel model = new LoginModel();
+    private bool ShowErrors;
+    private string Error = "";
+    HttpClient _httpClient = new HttpClient();
+
+    private async Task Authenticate()
+    {
+        UserService service = new UserService(_httpClient);
+        var result = await service.Login(model);
+        //if (result.IsCompleted)
+        //{
+        //    navManager.NavigateTo("/empExcelData", true);
+        //}
+        //else
+        //{
+        //    Error = result.Error;
+        //    ShowErrors = true;
+        //}
+       
+       
+    }
+}
