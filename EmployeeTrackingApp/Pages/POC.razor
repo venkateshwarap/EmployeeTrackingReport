@@ -1,0 +1,21 @@
+﻿@page "/poc"
+@using global::Employee.DataModel.Models;
+
+<h3>POC</h3>
+
+<SfGrid DataSource="@proofOfConcepts">
+    <GridColumns>
+        <GridColumn Field=@nameof(ProofOfConcept.EmpId) HeaderText="EmpId" TextAlign="TextAlign.Center" Width="120">
+        </GridColumn>
+        <GridColumn Field=@nameof(ProofOfConcept.Pocname) HeaderText="Pocname" TextAlign="TextAlign.Center" Width="150">
+        </GridColumn>
+        <GridColumn Field=@nameof(ProofOfConcept.SkillId) HeaderText="SkillId" TextAlign="TextAlign.Center" Width="130">
+        </GridColumn>
+        <GridColumn Field=@nameof(ProofOfConcept.StartDate) HeaderText="StartDate" TextAlign="TextAlign.Center" Width="120">
+        </GridColumn>
+        <GridColumn Field=@nameof(ProofOfConcept.EndDate) HeaderText="EndDate" TextAlign="TextAlign.Center" Width="120">
+        </GridColumn>
+    </GridColumns>
+</SfGrid>
+
+

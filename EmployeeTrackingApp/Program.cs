@@ -1,6 +1,6 @@
 using EmployeeTrackingApp.Data;
-using Microsoft.AspNetCore.Components;
-using Microsoft.AspNetCore.Components.Web;
+using EmployeeTrackingApp.Service;
+using Microsoft.AspNetCore.Components.Authorization;
 using Syncfusion.Blazor;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -10,6 +10,12 @@ builder.Services.AddRazorPages();
 builder.Services.AddServerSideBlazor();
 builder.Services.AddSingleton<WeatherForecastService>();
 builder.Services.AddSyncfusionBlazor();
+builder.Services.AddHttpClient();
+
+builder.Services.AddScoped<AuthenticationStateProvider, CustomAuthenticationStateProvider>();
+builder.Services.AddScoped<POCService>();
+builder.Services.AddScoped<DashboardService>();
+builder.Services.AddScoped<InterviewService>();
 
 var app = builder.Build();
 

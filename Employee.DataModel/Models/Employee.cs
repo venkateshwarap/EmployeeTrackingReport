@@ -9,6 +9,7 @@ public partial class Employees
 
     public string FullName { get; set; }
 
+
     public string Email { get; set; }
 
     public int? IsInProject { get; set; }

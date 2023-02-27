@@ -19,7 +19,7 @@ public partial class EtreportContext : DbContext
 
     public virtual DbSet<EmployeeProject> EmployeeProjects { get; set; }
 
-    public virtual DbSet<Interview> Interviews { get; set; }
+    public virtual DbSet<Interviews> Interviews { get; set; }
 
     public virtual DbSet<Learning> Learnings { get; set; }
 
@@ -41,7 +41,7 @@ public partial class EtreportContext : DbContext
 
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
 #warning To protect potentially sensitive information in your connection string, you should move it out of source code. You can avoid scaffolding the connection string by using the Name= syntax to read it from configuration - see https://go.microsoft.com/fwlink/?linkid=2131148. For more guidance on storing connection strings, see http://go.microsoft.com/fwlink/?LinkId=723263.
-        => optionsBuilder.UseSqlServer("Server=DESKTOP-B6F92CR\\SQL_DEV;Database=ETReport;Integrated Security=True;TrustServerCertificate=True;User Id=sa;Password=motivity@1;");
+        => optionsBuilder.UseSqlServer("Server=MLI00737\\SQL_DEV;Database=ETReport;Integrated Security=True;TrustServerCertificate=True;");
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
@@ -90,7 +90,7 @@ public partial class EtreportContext : DbContext
                 .IsUnicode(false);
         });
 
-        modelBuilder.Entity<Interview>(entity =>
+        modelBuilder.Entity<Interviews>(entity =>
         {
             entity.HasKey(e => e.Id).HasName("PK__Intervie__3214EC27FF1B3A06");
 

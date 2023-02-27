@@ -1,5 +1,7 @@
 ﻿using Employee.DataModel.CustomModel;
+using Employee.DataModel.Models;
 using Microsoft.EntityFrameworkCore.Metadata.Internal;
+using Newtonsoft.Json;
 using System.Security.Cryptography;
 using System.Text;
 using System.Text.Json;
@@ -15,22 +17,26 @@ namespace EmployeeTrackingApp.Service
             _httpClient = httpClient;
         }
 
-        private static string EncryptPass(string security)
+        private static string EncryptKey(string security)
         {
-            var salt = "997eff51db1544c7a3c2ddeb2053f052";
+            var salt = "abcdefghijklmnopqrstuvwxyz";
             var md5 = new HMACMD5(Encoding.UTF8.GetBytes(salt + security));
             byte[] data = md5.ComputeHash(Encoding.UTF8.GetBytes(security));
             return System.Convert.ToBase64String(data);
         }
-        //public async Task<HttpResponseMessage> Login(string Email, string Password)
         public async Task<HttpResponseMessage> Login(LoginModel model)
         {
-            model.security = EncryptPass(model.security);
-            var loginAsJson = JsonSerializer.Serialize(model);
-            var stringclient = new StringContent(loginAsJson, Encoding.UTF8, "application/json");
-            var response = await _httpClient.PostAsync(AppSettings.LoginAPI,stringclient);
-            //var responseModel = JsonSerializer.Deserialize<ResponseModel>(await response.Content.ReadAsStringAsync());
-            return response;
+            try
+            {
+                model.security = EncryptKey(model.security);
+                StringContent stringContent = new StringContent(JsonConvert.SerializeObject(model), Encoding.UTF8, AppSettings.Con);
+                var response = await _httpClient.PostAsync(AppSettings.LoginAPI, stringContent);
+                return response;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
         }
     }
 }

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace Employee.DataModel.Models;
 
-public partial class Interview
+public partial class Interviews
 {
     public int Id { get; set; }
 

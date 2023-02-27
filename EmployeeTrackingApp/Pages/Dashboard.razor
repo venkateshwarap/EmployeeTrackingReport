@@ -1,0 +1,26 @@
+﻿@page "/dashboard"
+@using global::Employee.DataModel.Models;
+
+
+<h3 style="align-content: center">Employee Details</h3>
+@if (employees == null)
+{
+    <p>Loading.....</p>
+}
+else
+{
+    <SfGrid DataSource="@employees">
+        <GridColumns>
+            <GridColumn Field=@nameof(Employees.FullName) HeaderText="FullName" TextAlign="TextAlign.Center" Width="120">
+            </GridColumn>
+            <GridColumn Field=@nameof(Employees.Email) HeaderText="Email" TextAlign="TextAlign.Center" Width="150">
+            </GridColumn>
+            <GridColumn Field=@nameof(Employees.IsInProject) HeaderText="IsInProject" TextAlign="TextAlign.Center" Width="130">
+            </GridColumn>
+            <GridColumn Field=@nameof(Employees.Status) HeaderText="Status" TextAlign="TextAlign.Center" Width="120">
+            </GridColumn>
+            <GridColumn Field=@nameof(Employees.Skill) HeaderText="Skill" TextAlign="TextAlign.Center" Width="120">
+            </GridColumn>
+        </GridColumns>
+    </SfGrid>
+}

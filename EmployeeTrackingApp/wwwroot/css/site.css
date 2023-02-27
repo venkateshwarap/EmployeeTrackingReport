@@ -62,3 +62,17 @@ a, .btn-link {
     .blazor-error-boundary::after {
         content: "An error has occurred."
     }
+
+/*.page-background-class {
+    background-image: url('../data/Images/Motivity.png')
+}
+.bg {*/
+    /* The image used */
+    /*background-image: url("../data/Images/Motivity.png");*/
+    /* Full height */
+    /*height: 100%;*/
+    /* Center and scale the image nicely */
+    /*background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}*/

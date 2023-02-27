@@ -15,32 +15,39 @@ namespace EmployeeDetails.Api.Controllers
             _context= context;  
         }
 
-        public class LoginModel
-        {
-            public string UserName { get; set; }
-            public string security { get; set; }
-        }
-
-
         [HttpPost("login")]
         public async Task<IActionResult> Login(LoginModel loginModel)
         {
-            var employee = (Employees)_context.Employees.ToList().Find(x => x.Email == loginModel.UserName);
-           
-            if(employee == null)
+            try
             {
-                return BadRequest("User not found.");
-            }
-            else
-            {
-                var userDetails = _context.UserDetails.ToList().Find(u => u.EmpId == employee.Id);
-                if (userDetails.Key == loginModel.security)
-                {
-                    return Ok();
-                }
+                var employee = (Employees)_context.Employees.ToList().Find(x => x.Email == loginModel.UserName);
 
+                if (employee!= null && _context.Employees.ToList().FindAll(x => x.ManagerId == employee.Id).Count > 0)
+                {
+
+                    if (employee == null)
+                    {
+                        return BadRequest("User not found.");
+                    }
+                    else
+                    {
+                        var userDetails = _context.UserDetails.ToList().Find(u => u.EmpId == employee.Id);
+                        if (userDetails.Key == loginModel.security)
+                        {
+                            return Ok(userDetails);
+                        }
+
+                    }
+
+                    return Ok("User successfully");
+                }
+                else
+                    return BadRequest();
             }
-            return Ok("User successfully");
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
         }
 
     }

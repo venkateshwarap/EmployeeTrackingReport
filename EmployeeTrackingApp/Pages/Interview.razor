@@ -1,0 +1,28 @@
+﻿@page "/interview"
+@using global::Employee.DataModel.Models;
+
+
+<h3 style="align-content: center">Interview</h3>
+@if (interviews == null)
+{
+    <p>Loading.....</p>
+}
+else
+{
+<SfGrid DataSource="@interviews">
+    <GridColumns>
+        <GridColumn Field=@nameof(Interviews.EmpId) HeaderText="EmpId" TextAlign="TextAlign.Center" Width="120">
+        </GridColumn>
+        <GridColumn Field=@nameof(Interviews.ProjectId) HeaderText="ProjectId" TextAlign="TextAlign.Center" Width="150">
+        </GridColumn>
+        <GridColumn Field=@nameof(Interviews.IsSelected) HeaderText="IsInProject" TextAlign="TextAlign.Center" Width="130">
+        </GridColumn>
+        <GridColumn Field=@nameof(Interviews.SkillId) HeaderText="Status" TextAlign="TextAlign.Center" Width="120">
+        </GridColumn>
+        <GridColumn Field=@nameof(Interviews.Comments) HeaderText="Skill" TextAlign="TextAlign.Center" Width="120">
+        </GridColumn>
+    </GridColumns>
+</SfGrid>
+}
+
+
